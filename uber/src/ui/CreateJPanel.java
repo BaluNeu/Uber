@@ -301,7 +301,23 @@ public class CreateJPanel extends javax.swing.JPanel {
             ex.printStackTrace();
         }
       
-     
+        try {
+        Integer.parseInt(String.valueOf(year));
+         }
+        catch(NumberFormatException e){
+        JOptionPane.showMessageDialog(this, "Please enter valid Year", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+        }
+         int seats;
+        try {
+            seats = (seatstxt.getText());
+            if (seats>7 || seats<2) {
+                throw new Exception("Please enter a valid value");
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid value");
+            ex.printStackTrace();
+        }
 
     
         Cars cf = carfleet.addNewCars();
