@@ -225,100 +225,71 @@ public class CreateJPanel extends javax.swing.JPanel {
         String availability = btngroup.getSelection().getActionCommand();
         
 
-                /*String ValidationMessage = "";
-                
-             
-                if (yeartxt.getText().length() != 4) {
-                ValidationMessage += "\nManufacture year must be in the "
-                + "format YYYY.";
-                } else {
-                try {
-                Integer.parseInt(yeartxt.getText());
-                } catch (NumberFormatException iae) {
-                ValidationMessage += "\nManufacture year must be a valid year";
-                }
-                }
-                System.out.println("validationMessagevalidationMessagevalidationMessagevalidationMessagevalidationMessage");
-
-                if (serialtxt.getText().isBlank()) {
-                ValidationMessage += "\nCar serial no. cannot be blank.";
-                }
-                if (mftxt.getText().isBlank()) {
-                ValidationMessage += "\nManufactured by field cannot be blank.";
-                }
-                if (model_txt.getText().isBlank()) {
-                ValidationMessage += "\nModel no. cannot be blank.";
-                }
-                if (yeartxt.getText().isBlank()) {
-                ValidationMessage += "\nManufacture Year cannot be blank.";
-                }
-                if (seatstxt.getText().isBlank()) {
-                ValidationMessage += "\nCar Seat Number cannot be blank.";
-                }
-
-
-
-
-                if (ValidationMessage.length() > 0) {
-                JOptionPane.showMessageDialog(this, ValidationMessage);
-                return;
-                }*/
-                
-       int numVal = 0;
-        
-        String regexYear = "(19|20)[0-9][0-9]";
-        Pattern patternYear = Pattern.compile(regexYear);
-        Matcher matchAccNo = patternYear.matcher(yeartxt.getText());
-        if(!matchAccNo.matches()){
-            JOptionPane.showMessageDialog(this,"Please enter valid year");
-            numVal +=1;
-        }
-        if(numVal == 0)
+              
+        String reg="^[a-zA-Z]{3,}$";  //manufacturer
+        Pattern prat=Pattern.compile(reg);
+        Matcher match=prat.matcher(mftxt.getText());
+        boolean set=match.find();
+        if(set==false)
         {
-            int parseInt = Integer.parseInt(yeartxt.getText());
-           
-        }
-        
-         String enteredValue = "";
-        try {
-            enteredValue = (serialtxt.getText());
-            if (enteredValue.isBlank() || enteredValue.isEmpty()) {
-                throw new Exception("Please enter a valid value");
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, "Please enter a valid value");
-            ex.printStackTrace();
-        }
-        
-         String enter = "";
-        try {
-            enteredValue = (mftxt.getText());
-            if (enter.isBlank() || enter.isEmpty()) {
-                throw new Exception("Please enter a valid value");
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, "Please enter a valid value");
-            ex.printStackTrace();
-        }
-      
-        try {
-        Integer.parseInt(String.valueOf(year));
+            mftxt.setBackground(Color.red);
          }
-        catch(NumberFormatException e){
-        JOptionPane.showMessageDialog(this, "Please enter valid Year", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-        }
-         int seats;
-        try {
-            seats = (seatstxt.getText());
-            if (seats>7 || seats<2) {
-                throw new Exception("Please enter a valid value");
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, "Please enter a valid value");
-            ex.printStackTrace();
-        }
-
+        else
+        {
+            mftxt.setBackground(Color.green);
+                 }
+        
+        String rege="^[A-Z]{2,}[0-9]{3}$";      //model number
+        Pattern pratr=Pattern.compile(rege);
+        Matcher matche=pratr.matcher(model_txt.getText());
+        boolean sete=matche.find();
+        if(set==false)
+        {
+            mftxt.setBackground(Color.red);
+         }
+        else
+        {
+            mftxt.setBackground(Color.green);
+                 }
+        String regex="^(19|20)\\\\d{2}$";       //manufactured year
+        Pattern pratre=Pattern.compile(rege);
+        Matcher matchea=pratre.matcher(yeartxt.getText());
+        boolean setei=matchea.find();
+        if(set==false)
+        {
+            mftxt.setBackground(Color.red);
+         }
+        else
+        {
+            mftxt.setBackground(Color.green);
+                 }
+        
+        String regu="^[a-zA-Z]{3,}$";       //available location
+        Pattern pratn=Pattern.compile(reg);
+        Matcher matcho=pratn.matcher(locationtxt.getText());
+        boolean setp=matcho.find();
+        if(set==false)
+        {
+            mftxt.setBackground(Color.red);
+         }
+        else
+        {
+            mftxt.setBackground(Color.green);
+                 }
+        
+        String regm="^[1-9]{1}$";
+        Pattern prats=Pattern.compile(reg);
+        Matcher matchs=prats.matcher(seatstxt.getText());
+        boolean sets=matchs.find();
+        if(set==false)
+        {
+            mftxt.setBackground(Color.red);
+         }
+        else
+        {
+            mftxt.setBackground(Color.green);
+                 }
+      
     
         Cars cf = carfleet.addNewCars();
         cf.setManufacturer(manufacturer);
